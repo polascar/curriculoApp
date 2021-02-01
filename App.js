@@ -69,13 +69,13 @@ export default class App extends Component {
       experience: [
         {
           id: '1',
-          name: 'Rcky',
+          name: 'Rcky - Analista de Suporte',
           functions:
             'Realizava projetos autônoma, especializada em atendimento via chat, gerenciava o TED e era provedora de base de conhecimento.',
         },
         {
           id: '2',
-          name: 'Tech Mahindra',
+          name: 'Tech Mahindra - Analista SAP',
           functions:
             'Realizo a resolução de solicitações de serviços SAP, gerencio tarefas e alimento a base de conhecimento. ',
         },
