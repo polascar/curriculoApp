@@ -13,6 +13,8 @@ import {
 
 import {Icon} from 'native-base';
 
+import ListItemCourses from './src/components/courses-list';
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -24,36 +26,48 @@ export default class App extends Component {
           name: 'JavaScript',
           logo: 'language-javascript',
           typeLogo: 'MaterialCommunityIcons',
+          colorIcon: '#EFD81D',
+          backgroundColor: '#000',
         },
         {
           id: '2',
           name: 'React Native',
           logo: 'react',
           typeLogo: 'MaterialCommunityIcons',
+          colorIcon: '#5ED3F3',
+          backgroundColor: 'transparent',
         },
         {
           id: '3',
           name: 'CSS',
           logo: 'language-css3',
           typeLogo: 'MaterialCommunityIcons',
+          colorIcon: '#fff',
+          backgroundColor: '#167DBE',
         },
         {
           id: '4',
           name: 'HTML',
           logo: 'language-html5',
           typeLogo: 'MaterialCommunityIcons',
+          colorIcon: '#E64C18',
+          backgroundColor: 'transparent',
         },
         {
           id: '5',
           name: 'Node',
           logo: 'nodejs',
           typeLogo: 'MaterialCommunityIcons',
+          colorIcon: '#83CD29',
+          backgroundColor: 'transparent',
         },
         {
           id: '6',
           name: 'React.JS',
           logo: 'react',
           typeLogo: 'MaterialCommunityIcons',
+          colorIcon: '#5ED3F3',
+          backgroundColor: 'transparent',
         },
       ],
       courses: [
@@ -85,22 +99,33 @@ export default class App extends Component {
 
   render() {
     const renderItemSkills = ({item}) => (
-      <ItemSkills name={item.name} logo={item.logo} typeLogo={item.typeLogo} />
+      <ItemSkills
+        name={item.name}
+        logo={item.logo}
+        typeLogo={item.typeLogo}
+        colorIcon={item.colorIcon}
+        backgroundColor={item.backgroundColor}
+      />
     );
 
-    const ItemSkills = ({name, logo, typeLogo}) => (
+    const ItemSkills = ({name, logo, typeLogo, colorIcon, backgroundColor}) => (
       <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
           width: '100%',
           justifyContent: 'space-between',
+          marginTop: 3.5,
         }}>
         <Text style={{}}>{name}</Text>
         <Icon
           type={typeLogo}
           name={logo}
-          style={{color: '#000', fontSize: 22}}
+          style={{
+            color: colorIcon,
+            fontSize: 22,
+            backgroundColor: backgroundColor,
+          }}
         />
       </View>
     );
@@ -114,12 +139,6 @@ export default class App extends Component {
         <Text style={{fontStyle: 'italic', marginTop: 5}}>{name}</Text>
         <Text style={{marginTop: 5}}>{functions}</Text>
       </View>
-    );
-
-    const renderItemCourse = ({item}) => <ItemCourse name={item.name} />;
-
-    const ItemCourse = ({name}) => (
-      <Text style={{marginTop: 5, fontStyle: 'italic'}}>{name}</Text>
     );
 
     return (
@@ -366,7 +385,7 @@ export default class App extends Component {
                     <Icon
                       type="FontAwesome"
                       name="instagram"
-                      style={{color: '#000', fontSize: 28, marginLeft: 3}}
+                      style={{color: '#9E1E97', fontSize: 28, marginLeft: 3}}
                     />
                   </TouchableOpacity>
                 </View>
@@ -384,11 +403,7 @@ export default class App extends Component {
                   padding: 5,
                 }}>
                 <Text style={{fontWeight: 'bold'}}>Formações Acadêmicas</Text>
-                <FlatList
-                  data={this.state.courses}
-                  renderItem={renderItemCourse}
-                  keyExtractor={(item) => item.id}
-                />
+                <ListItemCourses dataCourses={this.state.courses} />
               </View>
             </View>
           </View>
